@@ -1,11 +1,11 @@
 // import { available } from './data';
 // import { render } from 'react-dom';
-
-import { available } from './data';
+// import { useState } from 'react';
+import { available, state } from './data';
 import { AddOns, Finishing, Input, Plan } from './task';
 
-const stepSect = (index) => {
-  const step = available[index];
+const stepSect = () => {
+  const step = available[state.selectedTile];
   const titleStep = step.titleStep;
   const description = step.description;
 

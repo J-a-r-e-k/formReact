@@ -1,17 +1,25 @@
 import { available, state } from './data';
 import { useState } from 'react';
 import thank from './assets/icon-thank-you.svg';
+import Check from './assets/icon-checkmark.svg';
 
 export const Input = () => {
+  const [valueArray, setValueName] = useState({});
+  const inpChang = (value, type) => {
+    setValueName({ ...valueArray, [type]: value });
+    state.userInfo[type] = value;
+  };
+
   const input = available[0].input.map((step, index) => (
     <div key={index} className="info">
       <label className="infoName">{step.name}</label>
       <input
-        type={step.type}
+        type={step.typInput}
         id={step.id}
         name={step.name}
         placeholder={step.placeholder}
-        required="required"
+        value={state.userInfo[step.typInput]}
+        onChange={(e) => inpChang(e.target.value, step.typInput)}
       />
     </div>
   ));
@@ -49,13 +57,28 @@ export const Plan = () => {
       </button>
     );
   }
-
+  const [planId, setPlanId] = useState(state.selectedPlanId);
+  // background-color: rgb(240, 246, 255); border-color: rgb(2, 42, 97);
   const element = available[1].plan.map((step, index) => {
+    function planClick() {
+      setPlanId(step.id);
+      state.selectedPlanId = step.id;
+    }
+
+    const active = {
+      backgroundColor: planId == step.id ? 'rgb(240, 246, 255)' : '',
+      borderColor: planId == step.id ? 'rgb(2, 42, 97)' : '',
+    };
     return (
-      <button key={index} className="form__element">
-        <img src={step.icon} alt={`Plan ${step.title}`} />
+      <button
+        key={index}
+        className="form__element"
+        style={active}
+        onClick={planClick}
+      >
+        <img src={step.icon} alt={`Plan ${step.title} `} />
         <div className="form__descriotion">
-          <h3 className="form__title">{step.title}</h3>
+          <h3 className="form__title">{step.title} </h3>
           <p className="form__money">{`$${step.price[variant]}/${shortVariant}`}</p>
         </div>
       </button>
@@ -69,10 +92,33 @@ export const Plan = () => {
 };
 
 export const AddOns = () => {
+  const [addOns, setAddons] = useState(state.addOns);
   const element = available[2].addOns.map((step, index) => {
+    const testAdd = state.addOns.some((i) => i == step.id);
+    const active = {
+      backgroundColor: testAdd ? 'rgb(240, 246, 255)' : '',
+    };
+    const divActive = {
+      backgroundColor: testAdd ? 'rgb(2, 42, 97)' : '',
+      icon: testAdd ? <img src={Check} alt="selected" /> : '',
+    };
+    function addClick() {
+      state.addOns = addOns.includes(step.id)
+        ? addOns.filter((e) => e != step.id)
+        : [...addOns, step.id];
+      setAddons(state.addOns);
+    }
+
     return (
-      <button key={index} className="form__element form__element--addOns">
-        <div className="addOns__check"></div>
+      <button
+        key={index}
+        className="form__element form__element--addOns"
+        style={active}
+        onClick={addClick}
+      >
+        <div className="addOns__check" style={divActive}>
+          {divActive.icon}
+        </div>
         <div className="form__descriotion form__descriotion--addOns">
           <h3 className="form__title">{step.title}</h3>
           <p className="addOns__descriotion">{step.description}</p>

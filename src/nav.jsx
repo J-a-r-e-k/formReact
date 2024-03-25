@@ -1,8 +1,10 @@
 // import React from 'react'
 
-import { available } from './data';
+import { available, state } from './data';
 
-const nav = ({ ind }) => {
+const Nav = () => {
+  let ind = state.selectedTile;
+
   const itemList = available.map((step, index) => {
     let pName;
     if (ind === index) {
@@ -16,7 +18,13 @@ const nav = ({ ind }) => {
 
     return (
       <li key={index}>
-        <button className="navigation__step">
+        <button
+          className="navigation__step"
+          disabled={index < ind ? false : true}
+          onClick={() => {
+            console.log('ok');
+          }}
+        >
           <p className={pName} style={done}>
             {step.id}{' '}
           </p>
@@ -32,7 +40,7 @@ const nav = ({ ind }) => {
   return itemList;
 };
 
-export default nav;
+export default Nav;
 
 // if(true){<p className={aaa}>{step.id}</p>}else
 // {<p className="ooo">{step.id}</p>}

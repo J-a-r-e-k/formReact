@@ -3,15 +3,18 @@ import './app.scss';
 import Nav from './nav';
 import StepSect from './form';
 import { End } from './task';
-import { available } from './data';
+import { available, state } from './data';
 
 function App() {
-  const [index, stanIndex] = useState(0);
+  const [index, stanIndex] = useState(state.selectedTile);
+
   function btn(flag) {
     if (flag && index < available.length) {
       stanIndex(index + 1);
+      state.selectedTile = index + 1;
     } else if (!flag && index > 0) {
       stanIndex(index - 1);
+      state.selectedTile = index - 1;
     }
   }
 
@@ -19,10 +22,11 @@ function App() {
     <div className="window">
       <nav className="navigation">
         <ul className="navigation__wrap">
-          <Nav ind={index != 4 ? index : ''} />
+          {/* <Nav ind={index != 4 ? index : ''} /> */}
+          <Nav />
         </ul>
       </nav>
-      <div className="form">{index != 4 ? StepSect(index) : <End />}</div>
+      <div className="form">{index != 4 ? StepSect() : <End />}</div>
 
       <button
         className="window__btn window__btn--next"
