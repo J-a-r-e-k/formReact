@@ -8,7 +8,7 @@ export const state = {
     email: '',
     tel: '',
   },
-  selectedTile: 2,
+  selectedTile: 0,
 
   selectedPlanId: 1,
   selectedPlanVariant: 'monthly',

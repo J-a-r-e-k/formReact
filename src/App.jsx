@@ -7,9 +7,24 @@ import { available, state } from './data';
 
 function App() {
   const [index, stanIndex] = useState(state.selectedTile);
+  const [testReg, setTestReg] = useState(false);
 
-  function btn(flag) {
-    if (flag && index < available.length) {
+  function test(flag) {
+    const regName = /^[a-zA-Z]+(\s*[a-zA-ZąćęłńóśźżĄĆĘŁŃÓŚŹŻ]*)*$/;
+    const regEmail =
+      /^[a-z\d]+[\w\d.-]*@(?:[a-z\d]+[a-z\d-]+\.){1,5}[a-z]{2,6}$/i;
+    const regNr = /^([+]\d{2})?[- ]?(\d{3})[- ]?(\d{3})[- ]?(\d{3})$/;
+    let result =
+      regName.test(state.userInfo.text.trim()) &&
+      regEmail.test(state.userInfo.email.trim()) &&
+      regNr.test(state.userInfo.tel.trim());
+    setTestReg(result);
+    btn(result, flag);
+  }
+
+  function btn(result, flag) {
+    // console.log(a);
+    if (result && flag && index < available.length) {
       stanIndex(index + 1);
       state.selectedTile = index + 1;
     } else if (!flag && index > 0) {
@@ -30,7 +45,9 @@ function App() {
 
       <button
         className="window__btn window__btn--next"
-        onClick={() => btn(true)}
+        onClick={() => {
+          test(true);
+        }}
       >
         Next {index}
       </button>

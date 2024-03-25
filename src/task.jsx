@@ -9,9 +9,12 @@ export const Input = () => {
     setValueName({ ...valueArray, [type]: value });
     state.userInfo[type] = value;
   };
-
+  const Reg = () => {
+    return <p className="info__requier">Requires</p>;
+  };
   const input = available[0].input.map((step, index) => (
     <div key={index} className="info">
+      {<Reg />}
       <label className="infoName">{step.name}</label>
       <input
         type={step.typInput}
