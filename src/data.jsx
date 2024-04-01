@@ -13,7 +13,7 @@ export const state = {
   selectedPlanId: 1,
   selectedPlanVariant: 'monthly',
   shortVariant: '',
-  addOns: [1, 3],
+  addOns: [1, 2],
 };
 
 export const available = [

@@ -1,7 +1,15 @@
+.navigation {
+  position: relative;
+  flex-basis: 25%;
+  @media (min-width: 1000px) {
+    flex-basis: 35%;
+  }
+}
+
 .navigation__wrap {
   width: 100%;
   height: 100%;
-  background: no-repeat url(./assets/bg-sidebar-desktop.svg);
+  background: no-repeat url(../../assets/bg-sidebar-desktop.svg);
   background-position: bottom -13vh right;
   background-size: cover;
   display: flex;
@@ -79,9 +87,5 @@
   line-height: 2em;
   font-size: 2rem;
   color: white;
-}
-.navigation__number--active {
-  background-color: #c0e2ff;
-  border-color: #c0e2ff;
-  color: #000;
+  
 }

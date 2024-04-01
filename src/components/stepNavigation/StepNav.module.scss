@@ -1,0 +1,27 @@
+.next {
+  position: absolute;
+  bottom: 2%;
+  right: 5%;
+  height: 45px;
+  width: 120px;
+  background-color: hsl(213, 96%, 18%);
+  border-radius: 7px;
+  font-size: 1.6em;
+  color: #fff;
+  cursor: pointer;
+  @media (min-width: 1001px) {
+    bottom: 5%;
+  }
+}
+
+.back {
+  left: 10%;
+  width: fit-content;
+  color: #999;
+  background-color: transparent;
+  border: none;
+  @media (orientation: landscape), (min-width: 900px) {
+    left: 45%;
+    transform: translate(-50%, -0%);
+  }
+}
