@@ -13,7 +13,7 @@ function App() {
   //Stan//
   const [globalStep, setglobalStep] = useState(0);
   const [val, setVal] = useState({ text: '', email: '', tel: '' });
-  const [reg, setReg] = useState({});
+  const [reg, setReg] = useState({ text: 'true', email: 'true', tel: 'true' });
   const [variant, setVariant] = useState('monthly');
   const [planId, setPlanId] = useState(state.selectedPlanId);
   const [addOns, setAddons] = useState(state.addOns);
@@ -48,5 +48,8 @@ function App() {
     </div>
   );
 }
-
+window.addEventListener('beforeunload', (e) => {
+  e.preventDefault();
+  e.returnValue = '';
+});
 export default App;
