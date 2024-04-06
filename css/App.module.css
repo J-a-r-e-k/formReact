@@ -1,0 +1,24 @@
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-size: 10px;
+  list-style: none;
+  background: none;
+  border: none;
+  font-family: ubuntu, Arial, Helvetica, sans-serif;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  max-width: 1440px;
+  max-height: 900px;
+  overflow: hidden;
+}
+@media (min-width: 1000px) {
+  body {
+    background-color: hsl(217, 100%, 97%);
+  }
+}/*# sourceMappingURL=App.module.css.map */

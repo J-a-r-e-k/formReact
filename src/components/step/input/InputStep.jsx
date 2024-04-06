@@ -2,17 +2,17 @@
 import { available } from '../../../data';
 import Style from './step.module.scss';
 
-const Input = ({ val, setVal, reg }) => {
+const Input = ({ userData, getUserData, requirementTest }) => {
   const inpChang = (value, type) => {
-    setVal({ ...val, [type]: value });
+    getUserData({ ...userData, [type]: value });
   };
 
   const input = available[0].input.map((step, index) => (
     <div key={index} className={Style.info}>
-      {!reg[step.typInput] ? (
-        <p className={Style.infoRequier}>{`Requires ${step.name}`}</p>
-      ) : (
+      {requirementTest[step.typInput] || requirementTest == '' ? (
         ''
+      ) : (
+        <p className={Style.infoRequier}>{`Requires ${step.name}`}</p>
       )}
       <label className={Style.infoName}>{step.name}</label>
       <input
@@ -20,25 +20,28 @@ const Input = ({ val, setVal, reg }) => {
         id={step.id}
         name={step.name}
         placeholder={step.placeholder}
-        value={val[step.typInput]}
+        value={userData[step.typInput]}
         style={{
-          border: !reg[step.typInput] ? '1px solid red' : '1px solid #777',
+          border:
+            requirementTest[step.typInput] || requirementTest == ''
+              ? '1px solid #777'
+              : '1px solid red',
         }}
         onChange={(e) => {
           inpChang(e.target.value, step.typInput);
         }}
       />
-      {val[step.typInput] != '' ? (
+      {userData[step.typInput] != '' ? (
         <button
           className={Style.clean}
           onClick={() => {
-            setVal({ ...val, [step.typInput]: '' });
+            getUserData({ ...userData, [step.typInput]: '' });
           }}
         >
           <p>X</p>
         </button>
       ) : (
-        ''
+        <> </>
       )}
     </div>
   ));

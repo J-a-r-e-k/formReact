@@ -1,0 +1,48 @@
+.thankYou {
+  position: relative;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  width: 80%;
+  height: 70%;
+}
+.thankYou img {
+  display: block;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: 10px auto;
+}
+.thankYou h3 {
+  text-align: center;
+  font-size: 2em;
+  margin: 10px 0;
+}
+.thankYou p {
+  text-align: center;
+  font-size: 1.4em;
+  margin: 10px 0;
+}
+
+.title {
+  width: 100%;
+  font-size: 3em;
+  color: hsl(213, 96%, 18%);
+}
+@media (max-width: 950px) and (orientation: landscape) {
+  .title {
+    margin: 0;
+    font-size: 2em;
+  }
+}
+
+.description {
+  font-size: 1.4em;
+  color: #999;
+  padding-top: 5px;
+}/*# sourceMappingURL=styleEnd.module.css.map */

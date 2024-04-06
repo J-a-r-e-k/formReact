@@ -1,19 +1,23 @@
 import NavStep from './NavStep.module.scss';
 import { available } from '../../data';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 // eslint-disable-next-line react/prop-types
-const Nav = ({ setglobalStep, globalStep }) => {
+const Nav = ({ getGlobalStep, globalStep, test }) => {
   const [activeBtn, setActiveBtn] = useState(0);
-  globalStep > activeBtn && setActiveBtn(globalStep);
+
+  useEffect(() => {
+    if (globalStep > activeBtn) setActiveBtn(globalStep);
+  }, [globalStep, activeBtn]);
+
+  function getBackgroundColor(index) {
+    if (activeBtn < index) return 'rgb(255 255 255 / 10%)';
+    if (index == globalStep) return '#c0e2ff';
+  }
+
   const itemList = available.map((step, index) => {
     const active = {
-      backgroundColor:
-        activeBtn < index
-          ? 'rgb(255 255 255 / 10%)'
-          : index == globalStep
-          ? '#c0e2ff'
-          : '',
+      backgroundColor: getBackgroundColor(index),
       borderColor: index == globalStep ? '#c0e2ff' : '',
       color: index == globalStep ? '#000' : '',
       cursor: activeBtn >= index ? 'pointer' : 'not-allowed',
@@ -24,7 +28,7 @@ const Nav = ({ setglobalStep, globalStep }) => {
         <button
           className={NavStep.navigation__step}
           onClick={() => {
-            activeBtn >= index && setglobalStep(index);
+            test() && activeBtn >= index && getGlobalStep(index);
           }}
         >
           <p className={NavStep.navigation__number} style={active}>

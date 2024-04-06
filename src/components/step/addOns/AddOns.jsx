@@ -1,11 +1,9 @@
 /* eslint-disable react/prop-types */
 import { available } from '../../../data';
 import Check from '../../../assets/icon-checkmark.svg';
-// import Check from '../../assets/icon-checkmark.svg';
 import Style from './step.module.scss';
 
-// eslint-disable-next-line react/prop-types
-const AddOns = ({ variant, addOns, setAddons }) => {
+const AddOns = ({ variant, addOns, getAddons }) => {
   const element = available[2].addOns.map((step, index) => {
     const testAdd = addOns.some((i) => i == step.id);
     const active = {
@@ -20,7 +18,7 @@ const AddOns = ({ variant, addOns, setAddons }) => {
       addOns = addOns.includes(step.id) // sprawdza czy jest w tablicy //
         ? addOns.filter((e) => e != step.id) // jeśli jest -> zwraca tablice bez elementy klikniętego
         : [...addOns, step.id]; // jełsi nie ma -> dodaje do tablicy
-      setAddons(addOns);
+      getAddons(addOns);
     }
 
     return (
@@ -48,9 +46,3 @@ const AddOns = ({ variant, addOns, setAddons }) => {
 };
 
 export default AddOns;
-
-// export const AddOns = () => {
-//   const [addOns, setAddons] = useState(state.addOns);
-//
-//   return <div className="form__task ">{element}</div>;
-// };

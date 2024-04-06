@@ -2,7 +2,7 @@
 import { available } from '../../../data';
 import Style from './step.module.scss';
 
-const Finishing = ({ setglobalStep, variant, planId, addOns }) => {
+const Finishing = ({ getGlobalStep, variant, planId, addOns }) => {
   const finishPlan = available[1].plan.find((step) => step.id === planId);
   let sum = finishPlan.price[variant];
   const total = (value) => {
@@ -26,11 +26,14 @@ const Finishing = ({ setglobalStep, variant, planId, addOns }) => {
     <div className={Style.form__task}>
       <div className={Style.form__SumPlan}>
         <div>
-          <h3 className={Style.form__title}>{finishPlan.title}</h3>
+          <h3 className={Style.form__title}>
+            {finishPlan.title}(
+            {variant.charAt(0).toUpperCase() + variant.slice(1).toLowerCase()})
+          </h3>
           <button
             className={Style.change}
             onClick={() => {
-              setglobalStep(1);
+              getGlobalStep(1);
             }}
           >
             Change

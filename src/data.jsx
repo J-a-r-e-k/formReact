@@ -3,16 +3,15 @@ import Advanced from './assets/icon-advanced.svg';
 import Pro from './assets/icon-pro.svg';
 
 export const state = {
-  userInfo: {
-    text: '',
-    email: '',
-    tel: '',
-  },
-  selectedTile: 0,
-
+  // userInfo: {
+  //   text: '',
+  //   email: '',
+  //   tel: '',
+  // },
+  // selectedTile: 0,
   selectedPlanId: 1,
-  selectedPlanVariant: 'monthly',
-  shortVariant: '',
+  // selectedPlanVariant: 'monthly',
+  // shortVariant: '',
   addOns: [1, 2],
 };
 

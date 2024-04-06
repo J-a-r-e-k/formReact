@@ -2,15 +2,12 @@ import { available } from '../../../data';
 import Style from './step.module.scss';
 
 // eslint-disable-next-line react/prop-types
-const Plan = ({ variant, setVariant, planId, setPlanId }) => {
+const Plan = ({ variant, getVariant, planId, getPlanId }) => {
   function Toggle() {
-    // setToggleStan(variant == 'monthly' ? true : false);
-    // setShortVariant(toggleStan ? 'mo' : 'yr');
-    // state.shortVariant = shortVariant;
     return (
       <button
         className={Style.toggle}
-        onClick={() => setVariant(variant == 'monthly' ? 'yearly' : 'monthly')}
+        onClick={() => getVariant(variant == 'monthly' ? 'yearly' : 'monthly')}
       >
         <p style={{ color: variant == 'monthly' ? '#022a61' : '#999' }}>
           Monthly
@@ -36,7 +33,7 @@ const Plan = ({ variant, setVariant, planId, setPlanId }) => {
         className={Style.form__element}
         style={active}
         onClick={() => {
-          setPlanId(step.id);
+          getPlanId(step.id);
         }}
       >
         <img src={step.icon} alt={`Plan ${step.title} `} />

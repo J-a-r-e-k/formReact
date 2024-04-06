@@ -1,9 +1,7 @@
 /* eslint-disable react/prop-types */
 
-//dane
 import { available } from '../../../data';
 
-//Elements Module
 import SectionIntro from './SectionIntro.module.scss';
 import Input from '../../step/input/InputStep';
 import Plan from '../../step/plan/Plan';
@@ -11,41 +9,46 @@ import AddOns from '../../step/addOns/AddOns';
 import Finishing from '../../step/finishing/Finishing';
 import End from '../end/End';
 function Form({
-  setglobalStep,
+  getGlobalStep,
   globalStep,
-  //imput//
-  val,
-  setVal,
-  reg,
-  //plan//
+
+  userData,
+  getUserData,
+  requirementTest,
+
   variant,
-  setVariant,
+  getVariant,
   planId,
-  setPlanId,
-  //adds//
+  getPlanId,
+
   addOns,
-  setAddons,
+  getAddons,
 }) {
   const step = globalStep < 4 ? available[globalStep] : '';
 
   const stepElement = [
-    <Input key="0" val={val} setVal={setVal} reg={reg} />,
+    <Input
+      key="0"
+      userData={userData}
+      getUserData={getUserData}
+      requirementTest={requirementTest}
+    />,
     <Plan
       key="1"
       variant={variant}
-      setVariant={setVariant}
+      getVariant={getVariant}
       planId={planId}
-      setPlanId={setPlanId}
+      getPlanId={getPlanId}
     />,
     <AddOns
       key={'2'}
       variant={variant}
       addOns={addOns}
-      setAddons={setAddons}
+      getAddons={getAddons}
     />,
     <Finishing
       key={'3'}
-      setglobalStep={setglobalStep}
+      getGlobalStep={getGlobalStep}
       variant={variant}
       planId={planId}
       addOns={addOns}
