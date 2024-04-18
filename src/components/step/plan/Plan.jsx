@@ -1,4 +1,5 @@
 import { available } from '../../../data';
+import { convertVariantText } from '../../../utils/helpers';
 import Style from './Plan.module.scss';
 
 const Plan = ({ variant, getVariant, planId, getPlanId }) => {
@@ -38,9 +39,9 @@ const Plan = ({ variant, getVariant, planId, getPlanId }) => {
         <img src={step.icon} alt={`Plan ${step.title} `} />
         <div className={Style.descriotion}>
           <p className={Style.title}>{step.title} </p>
-          <p className={Style.money}>{`$${step.price[variant]}/${
-            variant == 'monthly' ? 'mo' : 'yr'
-          }`}</p>
+          <p className={Style.money}>{`$${
+            step.price[variant]
+          }/${convertVariantText(variant)}`}</p>
           {variant == 'monthly' ? null : (
             <p className={Style.free}>2 months free</p>
           )}

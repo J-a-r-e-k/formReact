@@ -4,8 +4,9 @@ import SectionIntro from './Form.module.scss';
 import Input from '../../Step/Input/InputStep';
 import Plan from '../../Step/Plan/Plan';
 import AddOns from '../../Step/AddOns/AddOns';
-import Finishing from '../../Step/Finishing/Finishing';
+import Summary from '../../Step/Summary/Summary';
 import End from '../End/End';
+
 function Form({
   getGlobalStep,
   globalStep,
@@ -44,7 +45,7 @@ function Form({
       addOns={addOns}
       getAddons={getAddons}
     />,
-    <Finishing
+    <Summary
       key={'3'}
       getGlobalStep={getGlobalStep}
       variant={variant}

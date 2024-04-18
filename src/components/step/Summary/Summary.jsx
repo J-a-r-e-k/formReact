@@ -1,22 +1,33 @@
 import { available } from '../../../data';
-import Style from './Finishing.module.scss';
+import { convertVariantText } from '../../../utils/helpers';
+import Style from './Summary.module.scss';
 
-const Finishing = ({ getGlobalStep, variant, planId, addOns }) => {
+const getTotalPrice = (planId, addOns, variant) => {
+  const selectedPlanPrice = available[1].plan.find((step) => step.id === planId)
+    ?.price[variant];
+
+  const addonsPrice = addOns.reduce((sum, addonIn) => {
+    const singleAddonPrice = available[2].addOns.find(
+      (add) => add.id === addonIn
+    ).price[variant];
+    return sum + singleAddonPrice;
+  }, 0);
+
+  return selectedPlanPrice + addonsPrice;
+};
+
+const Summary = ({ getGlobalStep, variant, planId, addOns }) => {
   const finishPlan = available[1].plan.find((step) => step.id === planId);
-  let sum = finishPlan.price[variant];
-  const total = (value) => {
-    sum = sum + value;
-  };
 
   const finishAdd = addOns.map((id, index) => {
     const addElement = available[2].addOns.find((add) => add.id === id);
-    total(addElement.price[variant]);
+
     return (
       <div key={index} className={Style.elementAddOns}>
         <p className={Style.text}>{addElement.title}</p>
-        <p className={Style.text}>{`+${addElement.price[variant]}/${
-          variant == 'monthly' ? 'mo' : 'yr'
-        }`}</p>
+        <p className={Style.text}>
+          +{addElement.price[variant]}/{convertVariantText(variant)}
+        </p>
       </div>
     );
   });
@@ -27,9 +38,7 @@ const Finishing = ({ getGlobalStep, variant, planId, addOns }) => {
         <div className={Style.plan}>
           <div>
             <p className={Style.title}>
-              {finishPlan.title}(
-              {variant.charAt(0).toUpperCase() + variant.slice(1).toLowerCase()}
-              )
+              {finishPlan.title} ({variant})
             </p>
             <button
               className={Style.change}
@@ -40,9 +49,9 @@ const Finishing = ({ getGlobalStep, variant, planId, addOns }) => {
               Change
             </button>
           </div>
-          <p className={Style.planMoney}>{`$${finishPlan.price[variant]}/${
-            variant == 'monthly' ? 'mo' : 'yr'
-          }`}</p>
+          <p className={Style.planMoney}>
+            ${finishPlan.price[variant]}/{convertVariantText(variant)}
+          </p>
         </div>
         <div>{finishAdd}</div>
       </div>
@@ -51,11 +60,12 @@ const Finishing = ({ getGlobalStep, variant, planId, addOns }) => {
           {`Total (per ${variant == 'monthly' ? 'month' : 'year'})`}
         </p>
         <p className={`${Style.text} ${Style.totalMoney}`}>
-          {`$${sum}/${variant == 'monthly' ? 'mo' : 'yr'}`}
+          ${getTotalPrice(planId, addOns, variant)}/
+          {convertVariantText(variant)}
         </p>
       </div>
     </>
   );
 };
 
-export default Finishing;
+export default Summary;
