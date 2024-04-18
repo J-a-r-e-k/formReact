@@ -1,0 +1,124 @@
+.form__title {
+  width: 100%;
+  font-size: 1.6em;
+  color: #022a61;
+  text-transform: capitalize;
+}
+@media (max-width: 950px) and (orientation: landscape) {
+  .form__title {
+    margin: 0;
+    font-size: 2em;
+  }
+}
+
+.form__element {
+  padding: 3% 2%;
+  margin-top: 3%;
+  max-height: 160px;
+  border: solid 1px #999;
+  border-radius: 10px;
+  cursor: pointer;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: left;
+}
+@media (orientation: landscape) and (max-width: 1000px) {
+  .form__element {
+    margin: 0;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: start;
+  }
+}
+.form__element img {
+  margin: 3% 5%;
+}
+@media (orientation: landscape) and (max-width: 1000px) {
+  .form__element img {
+    margin: 2% 0 0 0;
+  }
+}
+
+.form__task {
+  margin-top: 10px;
+  width: 100%;
+  max-height: 80%;
+  overflow: hidden;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  overflow-y: auto;
+}
+
+.form__descriotion {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-preferred-size: 80%;
+      flex-basis: 80%;
+}
+@media (orientation: landscape) and (max-width: 1000px) {
+  .form__descriotion {
+    margin: 0 auto 0 5%;
+  }
+}
+
+.addOns__descriotion {
+  font-size: 1.3em;
+  line-height: 1.5em;
+  color: #999;
+  -ms-flex-preferred-size: 80%;
+      flex-basis: 80%;
+}
+
+.addOns__check {
+  margin: 4%;
+  border-radius: 5px;
+  border: solid #999 1px;
+  height: 2em;
+  width: 2em;
+  position: relative;
+}
+@media (orientation: landscape) and (max-width: 1000px) {
+  .addOns__check {
+    margin: 0 auto;
+  }
+}
+.addOns__check img {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+.form__money {
+  font-size: 1.4em;
+  color: #999;
+  padding-top: 5px;
+}/*# sourceMappingURL=AddOns.module.css.map */

@@ -1,13 +1,11 @@
-/* eslint-disable react/prop-types */
-
 import { available } from '../../../data';
 
-import SectionIntro from './SectionIntro.module.scss';
-import Input from '../../step/input/InputStep';
-import Plan from '../../step/plan/Plan';
-import AddOns from '../../step/addOns/AddOns';
-import Finishing from '../../step/finishing/Finishing';
-import End from '../end/End';
+import SectionIntro from './Form.module.scss';
+import Input from '../../Step/Input/InputStep';
+import Plan from '../../Step/Plan/Plan';
+import AddOns from '../../Step/AddOns/AddOns';
+import Finishing from '../../Step/Finishing/Finishing';
+import End from '../End/End';
 function Form({
   getGlobalStep,
   globalStep,
@@ -58,9 +56,9 @@ function Form({
   return (
     <div className={SectionIntro.form}>
       {globalStep != available.length ? (
-        <section className={SectionIntro.form__step}>
-          <h1 className={SectionIntro.form__title}>{step.titleStep}</h1>
-          <p className={SectionIntro.form__info}>{step.description}</p>
+        <section className={SectionIntro.step}>
+          <h1 className={SectionIntro.title}>{step.titleStep}</h1>
+          <p className={SectionIntro.info}>{step.description}</p>
           {stepElement[globalStep]}
         </section>
       ) : (

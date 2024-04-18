@@ -1,7 +1,6 @@
 import { available } from '../../../data';
-import Style from './step.module.scss';
+import Style from './Plan.module.scss';
 
-// eslint-disable-next-line react/prop-types
 const Plan = ({ variant, getVariant, planId, getPlanId }) => {
   function Toggle() {
     return (
@@ -14,7 +13,7 @@ const Plan = ({ variant, getVariant, planId, getPlanId }) => {
         </p>
         <span className={Style.switch}>
           <span
-            className={Style.switch__add}
+            className={Style.switchAdd}
             style={{ left: variant == 'monthly' ? '3px' : '22px' }}
           ></span>
         </span>
@@ -30,25 +29,28 @@ const Plan = ({ variant, getVariant, planId, getPlanId }) => {
     return (
       <button
         key={index}
-        className={Style.form__element}
+        className={Style.element}
         style={active}
         onClick={() => {
           getPlanId(step.id);
         }}
       >
         <img src={step.icon} alt={`Plan ${step.title} `} />
-        <div className={Style.form__descriotion}>
-          <h3 className={Style.form__title}>{step.title} </h3>
-          <p className={Style.form__money}>{`$${step.price[variant]}/${
+        <div className={Style.descriotion}>
+          <p className={Style.title}>{step.title} </p>
+          <p className={Style.money}>{`$${step.price[variant]}/${
             variant == 'monthly' ? 'mo' : 'yr'
           }`}</p>
+          {variant == 'monthly' ? null : (
+            <p className={Style.free}>2 months free</p>
+          )}
         </div>
       </button>
     );
   });
 
   return (
-    <div className={Style.form__task}>
+    <div className={Style.task}>
       {element} {Toggle()}
     </div>
   );

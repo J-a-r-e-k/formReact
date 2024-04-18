@@ -1,92 +1,104 @@
-.form__task {
-  margin-top: 10px;
+.task {
   width: 100%;
   max-height: 80%;
-  overflow: hidden;
+  margin-top: 10px;
   display: flex;
   flex-direction: column;
   overflow-y: auto;
-  @media (orientation: landscape) and (max-width: 1000px) {
+  @media (orientation: landscape), (min-width: 1024px) {
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: space-between;
   }
 }
 
-.form__element {
-  margin-top: 3%;
+.element {
   max-height: 160px;
+  margin-top: 10px;
   border: solid 1px #999;
   border-radius: 10px;
   cursor: pointer;
   display: flex;
-  align-items: center;
   text-align: left;
-  @media (orientation: landscape) and (max-width: 1000px) {
-    margin: 0;
-    flex-direction: row;
+  @media (orientation: landscape), (min-width: 1024px) {
+    align-content: space-between;
+    width: 25%;
+    min-height: 150px;
     flex-wrap: wrap;
-    justify-content: start;
-  }
-  img {
-    margin: 3% 5%;
-    @media (orientation: landscape) and (max-width: 1000px) {
-      margin: 10% 10%;
+    @media (orientation: landscape) and (max-width: 1023px) {
+      height: auto;
     }
   }
+  img {
+    margin: 15px;
+  }
 }
-.form__descriotion {
+.element:hover {
+  border-color: #022a61;
+}
+.descriotion {
   display: flex;
   flex-direction: column;
   justify-content: center;
   flex-basis: 50%;
-  @media (orientation: landscape) and (max-width: 1000px) {
-    margin: 10% 10%;
+  margin: 15px;
+  @media (orientation: landscape), (min-width: 1024px) {
+    flex-basis: 100%;
   }
 }
 
-.form__title {
-  font-size: 1.6em;
+.title {
+  font-size: 1.8rem;
+  font-weight: bold;
   color: #022a61;
   text-transform: capitalize;
 }
-.form__money {
-  font-size: 1.4em;
+.money {
+  font-size: 1.4rem;
   color: #999;
   padding-top: 5px;
 }
+.free {
+  font-size: 1rem;
+  line-height: 1.5em;
+  color: #022a61;
+  @media (min-width: 1024px) {
+    font-size: 1.2rem;
+    line-height: 2em;
+  }
+}
 
 .toggle {
-  margin-top: 3%;
-  background-color: #f8f9fe;
   width: 100%;
-  padding: 3% 0;
+  margin-top: 10px;
+  background-color: #f8f9fe;
+  padding: 10px 0;
   border-radius: 10px;
   display: flex;
   justify-content: center;
   p {
-    margin: 0 5%;
-    font-size: 1.6em;
+    margin: 0 15px;
+    font-size: 1.4rem;
     color: #999;
+    font-weight: bold;
   }
 }
 .switch {
   position: relative;
-  margin: 0 0;
+  margin: 0;
   display: block;
   width: 40px;
   height: 20px;
   background-color: #022a61;
   border-radius: 90px;
 }
-.switch__add {
+.switchAdd {
   position: absolute;
   content: '';
   height: 15px;
   width: 15px;
   top: 50%;
   left: 3px;
-
   transform: translateY(-50%);
   background-color: #fff;
   transition: 0.4s;

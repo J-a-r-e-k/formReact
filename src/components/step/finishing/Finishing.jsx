@@ -1,6 +1,5 @@
-/* eslint-disable react/prop-types */
 import { available } from '../../../data';
-import Style from './step.module.scss';
+import Style from './Finishing.module.scss';
 
 const Finishing = ({ getGlobalStep, variant, planId, addOns }) => {
   const finishPlan = available[1].plan.find((step) => step.id === planId);
@@ -13,9 +12,9 @@ const Finishing = ({ getGlobalStep, variant, planId, addOns }) => {
     const addElement = available[2].addOns.find((add) => add.id === id);
     total(addElement.price[variant]);
     return (
-      <div key={index}>
-        <p className={Style.sum__text}>{addElement.title}</p>
-        <p className={Style.sum__text}>{`+${addElement.price[variant]}/${
+      <div key={index} className={Style.elementAddOns}>
+        <p className={Style.text}>{addElement.title}</p>
+        <p className={Style.text}>{`+${addElement.price[variant]}/${
           variant == 'monthly' ? 'mo' : 'yr'
         }`}</p>
       </div>
@@ -23,36 +22,39 @@ const Finishing = ({ getGlobalStep, variant, planId, addOns }) => {
   });
 
   return (
-    <div className={Style.form__task}>
-      <div className={Style.form__SumPlan}>
-        <div>
-          <h3 className={Style.form__title}>
-            {finishPlan.title}(
-            {variant.charAt(0).toUpperCase() + variant.slice(1).toLowerCase()})
-          </h3>
-          <button
-            className={Style.change}
-            onClick={() => {
-              getGlobalStep(1);
-            }}
-          >
-            Change
-          </button>
+    <>
+      <div className={Style.task}>
+        <div className={Style.plan}>
+          <div>
+            <p className={Style.title}>
+              {finishPlan.title}(
+              {variant.charAt(0).toUpperCase() + variant.slice(1).toLowerCase()}
+              )
+            </p>
+            <button
+              className={Style.change}
+              onClick={() => {
+                getGlobalStep(1);
+              }}
+            >
+              Change
+            </button>
+          </div>
+          <p className={Style.planMoney}>{`$${finishPlan.price[variant]}/${
+            variant == 'monthly' ? 'mo' : 'yr'
+          }`}</p>
         </div>
-        <p className={`${Style.form__title} ${Style.sum__totalPlan}`}>{`$${
-          finishPlan.price[variant]
-        }/${variant == 'monthly' ? 'mo' : 'yr'}`}</p>
+        <div>{finishAdd}</div>
       </div>
-      <div className={Style.form__SumAddOns}>{finishAdd}</div>
-      <div className={Style.form__SumTotal}>
-        <p className={Style.sum__text}>
+      <div className={Style.sumTotal}>
+        <p className={Style.text}>
           {`Total (per ${variant == 'monthly' ? 'month' : 'year'})`}
         </p>
-        <p className={`${Style.sum__text} ${Style.sum__totalMoney}`}>
-          {`${sum}/${variant == 'monthly' ? 'mo' : 'yr'}`}
+        <p className={`${Style.text} ${Style.totalMoney}`}>
+          {`$${sum}/${variant == 'monthly' ? 'mo' : 'yr'}`}
         </p>
       </div>
-    </div>
+    </>
   );
 };
 

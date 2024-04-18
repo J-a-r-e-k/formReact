@@ -1,0 +1,32 @@
+.thankYou {
+  width: 80%;
+  height: 70%;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.title {
+  text-align: center;
+  margin: 10px 0 15px;
+  font-weight: bold;
+  font-size: 3rem;
+  color: hsl(213, 96%, 18%);
+  @media (max-width: 940px) and (orientation: landscape) {
+    font-size: 2rem;
+  }
+}
+
+.description {
+  display: block;
+  text-align: center;
+  font-size: 1.4rem;
+  line-height: 1.5em;
+  color: #999;
+}
+
+.iconTY {
+  display: block;
+  margin: 0 auto 15px;
+}

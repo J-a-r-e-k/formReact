@@ -1,7 +1,6 @@
-/* eslint-disable react/prop-types */
 import { available } from '../../../data';
 import Check from '../../../assets/icon-checkmark.svg';
-import Style from './step.module.scss';
+import Style from './AddOns.module.scss';
 
 const AddOns = ({ variant, addOns, getAddons }) => {
   const element = available[2].addOns.map((step, index) => {
@@ -24,25 +23,25 @@ const AddOns = ({ variant, addOns, getAddons }) => {
     return (
       <button
         key={index}
-        className={Style.form__element}
+        className={Style.element}
         style={active.element}
         onClick={addClick}
       >
-        <div className={Style.addOns__check} style={active.check}>
+        <div className={Style.check} style={active.check}>
           {active.check.icon}
         </div>
-        <div className={Style.form__descriotion}>
-          <h3 className={Style.form__title}>{step.title}</h3>
-          <p className={Style.addOns__descriotion}>{step.description}</p>
+        <div className={Style.wrapDescriotion}>
+          <h3 className={Style.title}>{step.title}</h3>
+          <p className={Style.descriotion}>{step.description}</p>
         </div>
-        <p className={Style.form__money}>{`$${step.price[variant]}/${
+        <p className={Style.money}>{`+$${step.price[variant]}/${
           variant == 'monthly' ? 'mo' : 'yr'
         }`}</p>
       </button>
     );
   });
 
-  return <div className={Style.form__task}>{element}</div>;
+  return <div className={Style.task}>{element}</div>;
 };
 
 export default AddOns;

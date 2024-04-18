@@ -1,22 +1,7 @@
-/* eslint-disable react/prop-types */
 import { available } from '../../data';
 import Nav from './StepNav.module.scss';
 
 export const StepNav = ({ globalStep, getGlobalStep, test }) => {
-  // function test(flag) {
-  //   const requirementTestName = /^[a-zA-Z]+(\s*[a-zA-ZąćęłńóśźżĄĆĘŁŃÓŚŹŻ]*)*$/;
-  //   const requirementTestEmail =
-  //     /^[a-z\d]+[\w\d.-]*@(?:[a-z\d]+\.){1,5}[a-z]{2,6}$/i;
-  //   const requirementTestNr =
-  //     /^([+]\d{2})?[- ]?(\d{3})[- ]?(\d{3})[- ]?(\d{3})$/;
-
-  //   const text = requirementTestName.test(userData.text.trim());
-  //   const email = requirementTestEmail.test(userData.email.trim());
-  //   const tel = requirementTestNr.test(userData.tel.trim());
-  //   const result = text && email && tel;
-  //   getRequirementTest(text, email, tel);
-  //   click(result, flag);
-  // }
   const click = (test, flag) => {
     test &&
       flag &&
@@ -36,7 +21,7 @@ export const StepNav = ({ globalStep, getGlobalStep, test }) => {
           click(test(), true);
         }}
       >
-        {globalStep == 3 ? 'Confirm' : 'Next'}
+        {globalStep == 3 ? 'Confirm' : 'Next Step'}
       </button>
       <button
         className={`${Nav.next} ${Nav.back}`}
@@ -45,7 +30,7 @@ export const StepNav = ({ globalStep, getGlobalStep, test }) => {
           click(false);
         }}
       >
-        Back
+        Go Back
       </button>
     </div>
   );

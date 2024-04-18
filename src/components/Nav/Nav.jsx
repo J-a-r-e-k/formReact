@@ -2,7 +2,9 @@ import NavStep from './NavStep.module.scss';
 import { available } from '../../data';
 import { useEffect, useState } from 'react';
 
-// eslint-disable-next-line react/prop-types
+const MAIN_BAGROUND = 'rgb(255 255 255 / 10%)';
+const CURRENT_STEP_COLOR = '#c0e2ff';
+
 const Nav = ({ getGlobalStep, globalStep, test }) => {
   const [activeBtn, setActiveBtn] = useState(0);
 
@@ -11,14 +13,14 @@ const Nav = ({ getGlobalStep, globalStep, test }) => {
   }, [globalStep, activeBtn]);
 
   function getBackgroundColor(index) {
-    if (activeBtn < index) return 'rgb(255 255 255 / 10%)';
-    if (index == globalStep) return '#c0e2ff';
+    if (activeBtn < index) return MAIN_BAGROUND;
+    if (index == globalStep) return CURRENT_STEP_COLOR;
   }
 
   const itemList = available.map((step, index) => {
     const active = {
       backgroundColor: getBackgroundColor(index),
-      borderColor: index == globalStep ? '#c0e2ff' : '',
+      borderColor: index == globalStep ? CURRENT_STEP_COLOR : '',
       color: index == globalStep ? '#000' : '',
       cursor: activeBtn >= index ? 'pointer' : 'not-allowed',
     };
@@ -26,12 +28,12 @@ const Nav = ({ getGlobalStep, globalStep, test }) => {
     return (
       <li key={index}>
         <button
-          className={NavStep.navigation__step}
+          className={NavStep.step}
           onClick={() => {
             test() && activeBtn >= index && getGlobalStep(index);
           }}
         >
-          <p className={NavStep.navigation__number} style={active}>
+          <p className={NavStep.number} style={active}>
             {step.id}
           </p>
           <div>
@@ -44,7 +46,7 @@ const Nav = ({ getGlobalStep, globalStep, test }) => {
   });
   return (
     <nav className={NavStep.navigation}>
-      <ul className={NavStep.navigation__wrap}>{itemList}</ul>
+      <ul className={NavStep.wrap}>{itemList}</ul>
     </nav>
   );
 };

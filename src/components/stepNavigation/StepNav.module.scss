@@ -4,12 +4,12 @@
   right: 5%;
   height: 45px;
   width: 120px;
-  background-color: hsl(213, 96%, 18%);
+  background-color: #02295a;
   border-radius: 7px;
   font-size: 1.6em;
   color: #fff;
   cursor: pointer;
-  @media (min-width: 1001px) {
+  @media (min-width: 1024px) {
     bottom: 5%;
   }
 }
@@ -20,8 +20,11 @@
   color: #999;
   background-color: transparent;
   border: none;
-  @media (orientation: landscape), (min-width: 900px) {
+  @media (orientation: landscape), (min-width: 1024px) {
     left: 45%;
     transform: translate(-50%, -0%);
   }
+}
+.back:hover {
+  color: #02295a;
 }

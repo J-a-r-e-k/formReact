@@ -2,16 +2,8 @@ import Arcade from './assets/icon-arcade.svg';
 import Advanced from './assets/icon-advanced.svg';
 import Pro from './assets/icon-pro.svg';
 
-export const state = {
-  // userInfo: {
-  //   text: '',
-  //   email: '',
-  //   tel: '',
-  // },
-  // selectedTile: 0,
+export const initialData = {
   selectedPlanId: 1,
-  // selectedPlanVariant: 'monthly',
-  // shortVariant: '',
   addOns: [1, 2],
 };
 

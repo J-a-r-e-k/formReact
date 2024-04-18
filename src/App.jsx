@@ -1,22 +1,22 @@
-import './App.module.scss';
+import './App.scss';
 
-import Window from './Window.module.scss';
+import styles from './Window.module.scss';
 import { useEffect, useState } from 'react';
 
-import { state } from './data';
+import { initialData } from './data';
 
-import Nav from './components/Nav/Nav';
-import Form from './components/sectionIntro/form/form';
+import Nav from './Components/Nav/Nav';
+import Form from './Components/SectionIntro/Form/Form';
 
-import { StepNav } from './components/stepNavigation/StepNav';
+import { StepNav } from './Components/StepNavigation/StepNav';
 
 function App() {
   const [globalStep, setGlobalStep] = useState(0);
   const [userData, setUserData] = useState({ text: '', email: '', tel: '' });
   const [requirementTest, setRequirementTest] = useState('');
   const [variant, setVariant] = useState('monthly');
-  const [planId, setPlanId] = useState(state.selectedPlanId);
-  const [addOns, setAddons] = useState(state.addOns || []);
+  const [planId, setPlanId] = useState(initialData.selectedPlanId);
+  const [addOns, setAddons] = useState(initialData.addOns || []);
 
   function getGlobalStep(value) {
     setGlobalStep(value);
@@ -65,7 +65,7 @@ function App() {
   }, []);
 
   return (
-    <div className={Window.window}>
+    <div className={styles.window}>
       <Nav globalStep={globalStep} getGlobalStep={getGlobalStep} test={test} />
       <Form
         globalStep={globalStep}

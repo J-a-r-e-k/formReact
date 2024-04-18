@@ -1,6 +1,5 @@
-/* eslint-disable react/prop-types */
 import { available } from '../../../data';
-import Style from './step.module.scss';
+import Style from './InputStep.module.scss';
 
 const Input = ({ userData, getUserData, requirementTest }) => {
   const inpChang = (value, type) => {
@@ -47,7 +46,7 @@ const Input = ({ userData, getUserData, requirementTest }) => {
   ));
   return (
     <>
-      <div className={Style.form__task}>{input}</div>
+      <div className={Style.task}>{input}</div>
     </>
   );
 };
