@@ -9,7 +9,11 @@ const Plan = ({ variant, getVariant, planId, getPlanId }) => {
         className={Style.toggle}
         onClick={() => getVariant(variant == 'monthly' ? 'yearly' : 'monthly')}
       >
-        <p style={{ color: variant == 'monthly' ? '#022a61' : '#999' }}>
+        <p
+          className={`${Style.variant} ${
+            variant == 'monthly' ? Style.variantActive : ''
+          }`}
+        >
           Monthly
         </p>
         <span className={Style.switch}>
@@ -18,25 +22,30 @@ const Plan = ({ variant, getVariant, planId, getPlanId }) => {
             style={{ left: variant == 'monthly' ? '3px' : '22px' }}
           ></span>
         </span>
-        <p style={{ color: variant == 'yearly' ? '#022a61' : '#999' }}>Yeart</p>
+        <p
+          className={`${Style.variant} ${
+            variant == 'yearly' ? Style.variantActive : ''
+          }`}
+        >
+          Yeart
+        </p>
       </button>
     );
   }
   const element = available[1].plan.map((step, index) => {
-    const active = {
-      backgroundColor: planId == step.id ? 'rgb(240, 246, 255)' : '',
-      borderColor: planId == step.id ? 'rgb(2, 42, 97)' : '',
-    };
+    const active = planId == step.id ? Style.active : '';
     return (
       <button
         key={index}
-        className={Style.element}
-        style={active}
+        className={`${Style.element} ${active}`}
         onClick={() => {
           getPlanId(step.id);
         }}
       >
-        <img src={step.icon} alt={`Plan ${step.title} `} />
+        {/* <img src={step.icon} alt={`Plan ${step.title} `} /> */}
+
+        {/* //Zmiana IMG na SVG// */}
+        {step.icon}
         <div className={Style.descriotion}>
           <p className={Style.title}>{step.title} </p>
           <p className={Style.money}>{`$${

@@ -1,1 +1,2 @@
-export const convertVariantText = (variant) => variant == 'monthly' ? 'mo' : 'yr'
+export const convertVariantText = (variant) =>
+  variant == 'monthly' ? 'mo' : 'yr';

@@ -1,20 +1,13 @@
 import { available } from '../../../data';
-import Check from '../../../assets/icon-checkmark.svg';
 import Style from './AddOns.module.scss';
 import { convertVariantText } from '../../../utils/helpers';
-
 // import classnames from 'classnames'
 
 const AddOns = ({ variant, addOns, getAddons }) => {
   const element = available[2].addOns.map((step, index) => {
-    const isAddonChecked = addOns.some((i) => i == step.id);
-    const active = {
-      check: {
-        backgroundColor: isAddonChecked ? 'rgb(2, 42, 97)' : '',
-        icon: isAddonChecked ? <img src={Check} alt="selected" /> : '',
-      },
-      element: { backgroundColor: isAddonChecked ? 'rgb(240, 246, 255)' : '' },
-    };
+    const isAddonChecked = addOns.some((i) => i == step.id)
+      ? [Style.activeIcon, Style.active]
+      : '';
 
     function addClick() {
       addOns = addOns.includes(step.id) // sprawdza czy jest w tablicy //
@@ -26,15 +19,10 @@ const AddOns = ({ variant, addOns, getAddons }) => {
     return (
       <button
         key={index}
-        className={Style.element}
-        style={active.element}
+        className={`${Style.element} ${isAddonChecked[1]}`}
         onClick={addClick}
       >
-        {/* <div className={classnames(Styles.klasa1, {[Styles.klasa2]: testAdd})}></div> */}
-
-        <div className={Style.check} style={active.check}>
-          {active.check.icon}
-        </div>
+        <div className={`${Style.check} ${isAddonChecked[0]}`}></div>
         <div className={Style.wrapDescriotion}>
           <p className={Style.title}>{step.title}</p>
           <p className={Style.descriotion}>{step.description}</p>

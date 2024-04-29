@@ -29,11 +29,15 @@
       height: auto;
     }
   }
-  img {
+  svg {
     margin: 15px;
   }
 }
 .element:hover {
+  border-color: #022a61;
+}
+.active {
+  background-color: #f0f6ff;
   border-color: #022a61;
 }
 .descriotion {
@@ -76,12 +80,16 @@
   border-radius: 10px;
   display: flex;
   justify-content: center;
-  p {
-    margin: 0 15px;
-    font-size: 1.4rem;
-    color: #999;
-    font-weight: bold;
-  }
+}
+.variant {
+  margin: 0 15px;
+  font-size: 1.4rem;
+  color: #999;
+  font-weight: bold;
+}
+.variantActive {
+  color: #022a61;
+  left: 22px;
 }
 .switch {
   position: relative;
