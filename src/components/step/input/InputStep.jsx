@@ -1,9 +1,9 @@
 import { available } from '../../../data';
 import Style from './InputStep.module.scss';
 
-const Input = ({ userData, getUserData, requirementTest }) => {
+const Input = ({ userData, addUserData, requirementTest }) => {
   const inpChang = (value, type) => {
-    getUserData({ ...userData, [type]: value });
+    addUserData({ ...userData, [type]: value });
   };
 
   const input = available[0].input.map((step, index) => (
@@ -34,7 +34,7 @@ const Input = ({ userData, getUserData, requirementTest }) => {
         <button
           className={Style.clean}
           onClick={() => {
-            getUserData({ ...userData, [step.typInput]: '' });
+            addUserData({ ...userData, [step.typInput]: '' });
           }}
         >
           <p>X</p>

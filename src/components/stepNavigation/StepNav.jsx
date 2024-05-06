@@ -1,13 +1,13 @@
 import { available } from '../../data';
 import Nav from './StepNav.module.scss';
 
-export const StepNav = ({ globalStep, getGlobalStep, test }) => {
-  const click = (test, flag) => {
-    test &&
-      flag &&
-      globalStep < available.length &&
-      getGlobalStep(globalStep + 1);
-    !flag && getGlobalStep(globalStep - 1);
+export const StepNav = ({ globalStep, onGlobalStep, checkFormValue }) => {
+  const nextBtn = () => {
+    if (checkFormValue() && globalStep < available.length) onGlobalStep(globalStep + 1);
+  };
+
+  const backBtn = () => {
+    onGlobalStep(globalStep - 1);
   };
 
   if (globalStep === 4) return <> </>;
@@ -17,18 +17,14 @@ export const StepNav = ({ globalStep, getGlobalStep, test }) => {
       <button
         className={Nav.next}
         style={{ backgroundColor: globalStep == 3 ? 'rgb(146, 140, 254)' : '' }}
-        onClick={() => {
-          click(test(), true);
-        }}
+        onClick={nextBtn}
       >
         {globalStep == 3 ? 'Confirm' : 'Next Step'}
       </button>
       <button
         className={`${Nav.next} ${Nav.back}`}
         style={{ display: globalStep == 0 ? 'none' : '' }}
-        onClick={() => {
-          click(false);
-        }}
+        onClick={backBtn}
       >
         Go Back
       </button>

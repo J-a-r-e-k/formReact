@@ -2,12 +2,12 @@ import { available } from '../../../data';
 import { convertVariantText } from '../../../utils/helpers';
 import Style from './Plan.module.scss';
 
-const Plan = ({ variant, getVariant, planId, getPlanId }) => {
+const Plan = ({ variant, selectedVariant, planId, selectedPlan }) => {
   function Toggle() {
     return (
       <button
         className={Style.toggle}
-        onClick={() => getVariant(variant == 'monthly' ? 'yearly' : 'monthly')}
+        onClick={() => selectedVariant(variant == 'monthly' ? 'yearly' : 'monthly')}
       >
         <p
           className={`${Style.variant} ${
@@ -39,7 +39,7 @@ const Plan = ({ variant, getVariant, planId, getPlanId }) => {
         key={index}
         className={`${Style.element} ${active}`}
         onClick={() => {
-          getPlanId(step.id);
+          selectedPlan(step.id);
         }}
       >
         {/* <img src={step.icon} alt={`Plan ${step.title} `} /> */}

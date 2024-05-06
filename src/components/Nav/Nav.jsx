@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 const MAIN_BAGROUND = 'rgb(255 255 255 / 10%)';
 const CURRENT_STEP_COLOR = '#c0e2ff';
 
-const Nav = ({ getGlobalStep, globalStep, test }) => {
+const Nav = ({ onGlobalStep, globalStep, checkFormValue }) => {
   const [activeBtn, setActiveBtn] = useState(0);
 
   useEffect(() => {
@@ -30,7 +30,7 @@ const Nav = ({ getGlobalStep, globalStep, test }) => {
         <button
           className={NavStep.step}
           onClick={() => {
-            test() && activeBtn >= index && getGlobalStep(index);
+            checkFormValue() && activeBtn >= index && onGlobalStep(index);
           }}
         >
           <p className={NavStep.number} style={active}>

@@ -8,20 +8,20 @@ import Summary from '../../Step/Summary/Summary';
 import End from '../End/End';
 
 function Form({
-  getGlobalStep,
+  onGlobalStep,
   globalStep,
 
   userData,
-  getUserData,
+  addUserData,
   requirementTest,
 
   variant,
-  getVariant,
+  selectedVariant,
   planId,
-  getPlanId,
+  selectedPlan,
 
   addOns,
-  getAddons,
+  selectedAddons,
 }) {
   const step = globalStep < 4 ? available[globalStep] : '';
 
@@ -29,25 +29,25 @@ function Form({
     <Input
       key="0"
       userData={userData}
-      getUserData={getUserData}
+      addUserData={addUserData}
       requirementTest={requirementTest}
     />,
     <Plan
       key="1"
       variant={variant}
-      getVariant={getVariant}
+      selectedVariant={selectedVariant}
       planId={planId}
-      getPlanId={getPlanId}
+      selectedPlan={selectedPlan}
     />,
     <AddOns
       key={'2'}
       variant={variant}
       addOns={addOns}
-      getAddons={getAddons}
+      selectedAddons={selectedAddons}
     />,
     <Summary
       key={'3'}
-      getGlobalStep={getGlobalStep}
+      onGlobalStep={onGlobalStep}
       variant={variant}
       planId={planId}
       addOns={addOns}

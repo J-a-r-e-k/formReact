@@ -18,22 +18,22 @@ function App() {
   const [planId, setPlanId] = useState(initialData.selectedPlanId);
   const [addOns, setAddons] = useState(initialData.addOns || []);
 
-  function getGlobalStep(value) {
+  function onGlobalStep(value) {
     setGlobalStep(value);
   }
-  function getUserData(value) {
+  function addUserData(value) {
     setUserData(value);
   }
-  function getVariant(value) {
+  function selectedVariant(value) {
     setVariant(value);
   }
-  function getPlanId(value) {
+  function selectedPlan(value) {
     setPlanId(value);
   }
-  function getAddons(value) {
+  function selectedAddons(value) {
     setAddons(value);
   }
-  function test() {
+  function checkFormValue() {
     const requirementTestName = /^[a-zA-Z]+(\s*[a-zA-ZąćęłńóśźżĄĆĘŁŃÓŚŹŻ]*)*$/;
     const requirementTestEmail =
       /^[a-z\d]+[\w\d.-]*@(?:[a-z\d]+\.){1,5}[a-z]{2,6}$/i;
@@ -66,25 +66,29 @@ function App() {
 
   return (
     <div className={styles.window}>
-      <Nav globalStep={globalStep} getGlobalStep={getGlobalStep} test={test} />
+      <Nav
+        globalStep={globalStep}
+        onGlobalStep={onGlobalStep}
+        checkFormValue={checkFormValue}
+      />
       <Form
         globalStep={globalStep}
-        getGlobalStep={getGlobalStep}
+        onGlobalStep={onGlobalStep}
         userData={userData}
-        getUserData={getUserData}
+        addUserData={addUserData}
         requirementTest={requirementTest}
         variant={variant}
-        getVariant={getVariant}
+        selectedVariant={selectedVariant}
         planId={planId}
-        getPlanId={getPlanId}
+        selectedPlan={selectedPlan}
         addOns={addOns}
-        getAddons={getAddons}
+        selectedAddons={selectedAddons}
       />
       <StepNav
         globalStep={globalStep}
-        getGlobalStep={getGlobalStep}
+        onGlobalStep={onGlobalStep}
         userData={userData}
-        test={test}
+        checkFormValue={checkFormValue}
       />
     </div>
   );

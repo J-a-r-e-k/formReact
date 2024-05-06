@@ -16,7 +16,7 @@ const getTotalPrice = (planId, addOns, variant) => {
   return selectedPlanPrice + addonsPrice;
 };
 
-const Summary = ({ getGlobalStep, variant, planId, addOns }) => {
+const Summary = ({ onGlobalStep, variant, planId, addOns }) => {
   const finishPlan = available[1].plan.find((step) => step.id === planId);
 
   const finishAdd = addOns.map((id, index) => {
@@ -43,7 +43,7 @@ const Summary = ({ getGlobalStep, variant, planId, addOns }) => {
             <button
               className={Style.change}
               onClick={() => {
-                getGlobalStep(1);
+                onGlobalStep(1);
               }}
             >
               Change

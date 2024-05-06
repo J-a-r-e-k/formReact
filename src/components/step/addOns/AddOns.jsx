@@ -3,17 +3,19 @@ import Style from './AddOns.module.scss';
 import { convertVariantText } from '../../../utils/helpers';
 // import classnames from 'classnames'
 
-const AddOns = ({ variant, addOns, getAddons }) => {
+const AddOns = ({ variant, addOns, selectedAddons }) => {
   const element = available[2].addOns.map((step, index) => {
     const isAddonChecked = addOns.some((i) => i == step.id)
       ? [Style.activeIcon, Style.active]
       : '';
 
     function addClick() {
-      addOns = addOns.includes(step.id) // sprawdza czy jest w tablicy //
-        ? addOns.filter((e) => e != step.id) // jeśli jest -> zwraca tablice bez elementy klikniętego
-        : [...addOns, step.id]; // jełsi nie ma -> dodaje do tablicy
-      getAddons(addOns);
+      // sprawdza czy jest w tablicy //
+      if (addOns.includes(step.id)) {
+        selectedAddons(addOns.filter((e) => e != step.id)); // jeśli jest -> zwraca tablice bez elementy klikniętego
+      } else {
+        selectedAddons([...addOns, step.id]); // jełsi nie ma -> dodaje do tablicy
+      }
     }
 
     return (
