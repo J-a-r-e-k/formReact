@@ -11,7 +11,7 @@
     "deploy": "gh-pages -d dist",
     "predeploy": "npm run build"
   },
-  "homepage": "https://j-a-r-e-k.github.io/formReact/",
+  "homepage": "https://j-a-r-e-k.github.io/formReact",
   "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
